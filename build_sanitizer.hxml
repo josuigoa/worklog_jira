@@ -1,0 +1,6 @@
+--library action_worklog
+--library hxnodejs
+
+-main Sanitizer
+
+--js sanitizer.js

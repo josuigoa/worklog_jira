@@ -31,10 +31,14 @@ jobs:
     - name: Compile project
       run: haxe build.hxml
 
+    - name: Compile sanitizer
+      run: haxe build_sanitizer.hxml
+
     - name: Package to release
       run: |
         mkdir ${{ env.CMD_NAME }}
         mv app.js ${{ env.CMD_NAME }}
+        mv sanitizer.js ${{ env.CMD_NAME }}
         mv readme.md ${{ env.CMD_NAME }}
         zip -r ${{ env.CMD_NAME }} ${{ env.CMD_NAME }}
 

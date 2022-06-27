@@ -8,6 +8,7 @@ using StringTools;
 class App {
 	static inline var JIRA_REST_PATH = 'rest/api/2/issue';
 	static inline var DONE_PREFIX = '[DONE] ';
+	static inline var ERROR_PREFIX = '[ERROR] ';
 	static var logStream:js.node.fs.WriteStream;
 	static var url:String;
 	static var worklogPath:String;
@@ -47,7 +48,7 @@ class App {
 
 			for (dayData in worklogData) {
 				for (task in dayData.tasks) {
-					if (task.work == null || task.work.startsWith(DONE_PREFIX))
+					if (task.work == null || task.work.startsWith(DONE_PREFIX) || task.work.startsWith(ERROR_PREFIX))
 						continue;
 					allTasks++;
 					existsTask(task.work).then(exists -> {
@@ -60,14 +61,17 @@ class App {
 								addDone();
 							}).catchError(e -> {
 								log('$logTaskId: Error when "addTaskWorklog": $e');
+								task.work = ERROR_PREFIX + task.work;
 								addDone();
 							});
 						} else {
 							log('$logTaskId issue does not exist in Jira.');
+							task.work = ERROR_PREFIX + task.work;
 							addDone();
 						}
 					}).catchError(e -> {
 						log('[${dayData.day}/${task.work}] Error when "existsTask": $e');
+						task.work = ERROR_PREFIX + task.work;
 						addDone();
 					});
 				}

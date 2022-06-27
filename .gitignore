@@ -1,3 +1,4 @@
-app.js
-exec.bat
+*.js
+*.bat
 wl.json
+gen.readme.md
