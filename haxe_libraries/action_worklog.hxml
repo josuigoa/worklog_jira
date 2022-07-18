@@ -1,6 +1,6 @@
-# @install: lix --silent download "gh://github.com/ideckia/action_worklog#b82e42144a6bba27240991254475633bb3fe6497" into action_worklog/0.0.0/github/b82e42144a6bba27240991254475633bb3fe6497
+# @install: lix --silent download "gh://github.com/ideckia/action_worklog#f7a4f2e57ca9753fa9293ee09f885038da8bd8ef" into action_worklog/0.0.0/github/f7a4f2e57ca9753fa9293ee09f885038da8bd8ef
 -lib datetime
 -lib hxnodejs
 -lib ideckia_api
--cp ${HAXE_LIBCACHE}/action_worklog/0.0.0/github/b82e42144a6bba27240991254475633bb3fe6497/
+-cp ${HAXE_LIBCACHE}/action_worklog/0.0.0/github/f7a4f2e57ca9753fa9293ee09f885038da8bd8ef/
 -D action_worklog=0.0.0
