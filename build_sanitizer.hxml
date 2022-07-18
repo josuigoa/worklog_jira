@@ -1,5 +1,6 @@
 --library action_worklog
---library hxnodejs
+
+--dce full
 
 -main Sanitizer
 
