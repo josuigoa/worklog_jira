@@ -32,7 +32,8 @@ class App {
 
 		for (wl in sys.FileSystem.readDirectory(worklogsDir)) {
 			try {
-				manageTasks(haxe.io.Path.join([worklogsDir, wl]));
+				if (wl.startsWith('worklog_'))
+					manageTasks(haxe.io.Path.join([worklogsDir, wl]));
 			} catch (e:haxe.Exception) {
 				trace('Error managing [$wl] file tasks. $e');
 			}
@@ -46,8 +47,10 @@ class App {
 
 		inline function addDone() {
 			doneTasks++;
-			if (doneTasks == allTasks)
+			if (doneTasks == allTasks) {
 				WorklogUtils.saveToFile(worklogFile, worklogData);
+				Sys.println('Ataza guztiak jiran inputatuak.');
+			}
 		}
 		var hour = 'T08:00:00.000+0000';
 

@@ -20,6 +20,9 @@ class Sanitizer {
 			var worklogData;
 			Sys.println('Worklog files sanitizer');
 			for (wl in sys.FileSystem.readDirectory(worklogsDir)) {
+				if (!wl.startsWith('worklog_'))
+					continue;
+
 				worklogFile = haxe.io.Path.join([worklogsDir, wl]);
 				try {
 					worklogData = WorklogUtils.parse(worklogFile);
